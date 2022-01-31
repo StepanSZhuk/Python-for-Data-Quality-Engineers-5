@@ -11,7 +11,7 @@ import string
 random_dict = [
     # creating random numbers of keys in range(1, 3) for one dictionary and populating randoms keys using
     # random.choice(string.ascii_lowercase)) and randoms values using random.randint(0, 100).
-    {x: random.randint(0, 100) for x in [random.choice(string.ascii_lowercase) for y in range(random.randint(1, 3))]}
+    {x: random.randint(0, 100) for x in [random.choice(string.ascii_lowercase) for y in range(random.randint(1,26))]}
     # creating random number of dicts (from 2 to 10)
     for z in range(random.randint(2, 10))]
 
