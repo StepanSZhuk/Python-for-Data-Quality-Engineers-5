@@ -3,12 +3,9 @@ import random
 from datetime import datetime
 
 
-class News:
-    def publish_news(self):
-        text_news = input('Enter the text of news: ')
-        city = input('Enter the city where the news came from: ')
+class Publish:
+    def publish(self, header, text, footer):
         with open('newsfeed.txt', 'a+') as f:
-            data_now = time.strftime("%d/%m/%Y %H.%M")
             # Move read cursor to the start of file.
             f.seek(0)
             # If file is not empty then append '\n'
@@ -16,19 +13,25 @@ class News:
             if len(data) > 0:
                 f.write(3 * "\n")
             # Append text at the end of file
-            # elements = enter_news()
-            f.write('News ' + '-' * 25)
+            f.write(header)
             f.write('\n')
-            # f.write(elements[0])
-            f.write(text_news)
+            f.write(text)
             f.write('\n')
-            # f.write(elements[1] + ', ' + time_str)
-            f.write(city + ', ' + data_now)
+            f.write(footer)
             f.write('\n')
-            # for line in elements:
-            #     f.write(line +', ' + time_str)
-            #     f.write('\n')
             f.write('-' * 30)
+        # return (print(f'\nThis news is published\n'))
+
+
+class News(Publish):
+    def publish_news(self):
+        city = input('Enter the city where the news came from: ')
+        text = input('Enter the text of news: ')
+        self.text = text
+        self.header = str('News ' + '-' * 25)
+        self.footer = str(city + ', ' + time.strftime("%d/%m/%Y %H.%M"))
+        result = Publish()
+        result.publish(self.header, self.text, self.footer)
         print(f'\nThis news is published\n')
 
 
@@ -36,44 +39,23 @@ class PrivateAd:
     def publish_ad(self):
         text_ad = input('Enter the text of ad: ')
         expiration_date = input('Enter the expiration date for this ad (format - dd/mm/yyyy): ')
-        with open('newsfeed.txt', 'a+') as f:
-            delta = str((datetime.strptime(expiration_date, '%d/%m/%Y') - datetime.now()).days)
-            # Move read cursor to the start of file.
-            f.seek(0)
-            # If file is not empty then append '\n'
-            data = f.read(100)
-            if len(data) > 0:
-                f.write(3 * "\n")
-            # Append text at the end of file
-            f.write('Private Ad ' + '-' * 19)
-            f.write('\n')
-            f.write(text_ad)
-            f.write('\n')
-            f.write('Actual until: ' + expiration_date + ', ' + delta + ' days left.')
-            f.write('\n')
-            f.write('-' * 30)
+        self.header = 'Private Ad ' + '-' * 19
+        self.text = text_ad
+        delta = str((datetime.strptime(expiration_date, '%d/%m/%Y') - datetime.now()).days)
+        self.footer = 'Actual until: ' + expiration_date + ', ' + delta + ' days left.'
+        result = Publish()
+        result.publish(self.header, self.text, self.footer)
         print(f'\nThis ad is published\n')
 
 
 class PublishTips:
     def publish_tips(self):
+        self.header = 'Tip of the day ' + '-' * 15
         text_tip = input('Enter the text of ad: ')
-        with open('newsfeed.txt', 'a+') as f:
-            # Move read cursor to the start of file.
-            f.seek(0)
-            # If file is not empty then append '\n'
-            data = f.read(100)
-            temp = random.randint(0, 10)
-            if len(data) > 0:
-                f.write(3 * "\n")
-            # Append text at the end of file
-            f.write('Tip of the day ' + '-' * 15)
-            f.write('\n')
-            f.write(text_tip)
-            f.write('\n')
-            f.write('Usefulness of tip: ' + str(temp) + ' of 10.')
-            f.write('\n')
-            f.write('-' * 30)
+        self.text = text_tip
+        self.footer = 'Usefulness of tip: ' + str(random.randint(0, 10)) + ' of 10.'
+        result = Publish()
+        result.publish(self.header, self.text, self.footer)
         print(f'\nThis tip is published\n')
 
 
