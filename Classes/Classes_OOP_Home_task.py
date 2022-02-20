@@ -25,8 +25,8 @@ class Publish:
 
 class News(Publish):
     def publish_news(self):
-        city = input('Enter the city where the news came from: ')
         text = input('Enter the text of news: ')
+        city = input('Enter the city where the news came from: ')
         self.text = text
         self.header = str('News ' + '-' * 25)
         self.footer = str(city + ', ' + time.strftime("%d/%m/%Y %H.%M"))
@@ -59,7 +59,7 @@ class PublishTips:
         print(f'\nThis tip is published\n')
 
 
-class Choose_element(News, PrivateAd, PublishTips):
+class ChooseElement(News, PrivateAd, PublishTips):
     @staticmethod
     def choose_ele():
         while True:
@@ -84,6 +84,6 @@ class Choose_element(News, PrivateAd, PublishTips):
                 print(f"\nError! It's not a number, please try again.\n")
         return element
 
-
-start = Choose_element()
-start.choose_ele()
+if __name__ == '__main__':
+    start = ChooseElement()
+    start.choose_ele()
