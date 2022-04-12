@@ -1,0 +1,14 @@
+{
+    "news": {
+        "text": "Today is cold",
+        "city": "Lviv",
+	"date": "10/04/2022 14:00"
+    },
+    "private ad": {
+        "text": "I want rent a car",
+        "expire_date": "01/06/2022"
+    },
+    "Tip of the day": {
+        "text": "Take time to know yourself."
+    }
+}
