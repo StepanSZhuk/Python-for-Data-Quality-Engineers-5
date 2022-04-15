@@ -1,0 +1,14 @@
+<newsfeed>
+	<publication name = 'News'>
+		<text>Something happened</text>
+		<city>Stryi</city>
+		<date>10/04/2022 14:00</date>
+	</publication>
+	<publication name = 'Private Ad'>
+		<text>I want rent a car</text>
+		<expire_date>30/04/2022</expire_date>
+	</publication>
+	<publication name = 'Tip of the day'>
+		<text>Take time to know yourself.</text>
+	</publication>
+</newsfeed>
